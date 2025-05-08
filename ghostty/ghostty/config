@@ -1,0 +1,8 @@
+
+font-size = 18
+macos-option-as-alt = true
+window-width = 100000000
+window-height = 100000000
+
+keybind = cmd+shift+o=reload_config
+keybind = global:cmd+shift+space=toggle_quick_terminal

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+alias lg='lazygit'
+alias ll='eza -l'
+alias gp='cd "$(~/.scripts/get_projects.sh | fzf)"'

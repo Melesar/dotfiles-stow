@@ -1,0 +1,72 @@
+[alias]
+	s = status -sb
+	c = commit
+	p = pull --rebase
+
+	a = add
+	ai = add -i
+	ap = add -p
+	aa = add -A
+
+	; Diff unstaged
+	d = diff
+
+	; Diff staged
+	ds = diff --staged
+
+	; Show pretty log
+ 	l = log --format=format:'%C(bold blue)%h%C(reset) %C(bold green)(%an)%C(reset) %C(white)%s%C(reset) %C(dim white)- %ar%C(reset)%C(auto)%d%C(reset)'
+
+	; Show log with the graph
+	lg = l --graph
+
+	; Show detailed log (with patches for each commit)
+ 	ld = lg -p
+
+	; Show local branches
+	b = branch --format='%(if)%(HEAD)%(then)%(color:green)* %(end)%(refname:short) %(color:yellow)%(upstream:track,nobracket)'
+
+	; Switch to local branch (with fuzzy search)
+	sw = !git branch --format='%(refname:short)' | fzf | xargs -I {} git switch {}
+
+	; Switch to a remote branch (with fuzzy search)
+	swa = !git branch -a --format="%(refname:short)" | grep "origin" | cut -c 8- | fzf | xargs -I {} git switch {}
+
+	; Copy current branch name
+	cpb = !git branch | grep '*' | cut -c 3- | xargs echo -n | pbcopy
+
+	; Edit global config file
+	econf = config --global --edit
+
+	; Discard changes in the unstaged file
+	re = restore
+
+	; Unstage a file
+	res = restore --staged
+
+	; Unstage and discard changes to a file
+	red = restore --staged --worktree
+
+[core]
+	pager = diff-so-fancy | bat
+
+[interactive]
+	diffFilter = diff-so-fancy --patch
+
+[push]
+	autoSetupRemote = true
+
+[color.status]
+	added = "green bold"
+	changed = "yellow bold"
+	untracked = "red bold"
+
+
+
+
+
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true

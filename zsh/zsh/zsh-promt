@@ -1,0 +1,13 @@
+#!/bin/sh
+
+autoload -Uz vcs_info
+
+zstyle ':vcs_info:*' enable git 
+
+precmd_vcs_info() { vcs_info }
+precmd_functions+=( precmd_vcs_info )
+zstyle ':vcs_info:*' formats 'on %F{green}%b'
+setopt prompt_subst
+
+PROMPT="%(?:%{$fg_bold[green]%}➜ :%{$fg_bold[red]%}➜ )%{$fg[cyan]%}%c%{$reset_color%} "
+PROMPT+="\$vcs_info_msg_0_ "
