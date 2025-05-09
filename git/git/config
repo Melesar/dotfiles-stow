@@ -1,12 +1,16 @@
 [alias]
 	s = status -sb
 	c = commit
+
 	p = pull --rebase
+	pf = push --force-with-lease
 
 	a = add
 	ai = add -i
 	ap = add -p
 	aa = add -A
+
+	m = merge --no-edit
 
 	; Diff unstaged
 	d = diff
