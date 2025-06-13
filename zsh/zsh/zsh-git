@@ -1,11 +1,13 @@
 #!/bin/sh
 
+source fzf-git.sh
+
 cbr() {
 	git branch | grep '*' | cut -c 3- | xargs echo -n
 }
 
 br() {
-	git branch --format='%(refname:short)' | fzf
+	_fzf_git_branches
 }
 
 brr() {
@@ -13,7 +15,11 @@ brr() {
 }
 
 cmt() {
-	git log --format='%C(bold yellow)%h%C(reset) %s' -n 10 | fzf | cut -f 1 -d " "	
+	_fzf_git_hashes
+}
+
+fls() {
+	_fzf_git_files
 }
 
 stf () {
