@@ -1,6 +1,8 @@
 [alias]
 	s = status -sb
+
 	c = commit
+	ca = commit --amend --no-edit
 
 	p = pull --rebase
 	pf = push --force-with-lease
@@ -11,6 +13,8 @@
 	aa = add -A
 
 	m = merge --no-edit
+
+	sw = switch
 
 	; Diff unstaged
 	d = diff
@@ -30,14 +34,8 @@
 	; Show local branches
 	b = branch --format='%(if)%(HEAD)%(then)%(color:green)* %(end)%(refname:short) %(color:yellow)%(upstream:track,nobracket)'
 
-	; Switch to local branch (with fuzzy search)
-	sw = !git branch --format='%(refname:short)' | fzf | xargs -I {} git switch {}
-
-	; Switch to a remote branch (with fuzzy search)
-	swa = !git branch -a --format="%(refname:short)" | grep "origin" | cut -c 8- | fzf | xargs -I {} git switch {}
-
 	; Copy current branch name
-	cpb = !git branch | grep '*' | cut -c 3- | xargs echo -n | pbcopy
+	cpb = !git rev-parse --abbrev-ref HEAD | xargs echo -n | pbcopy
 
 	; Edit global config file
 	econf = config --global --edit
@@ -65,6 +63,9 @@
 
 [push]
 	autoSetupRemote = true
+
+[rebase]
+	autosquash = true
 
 [color.status]
 	added = "green bold"
