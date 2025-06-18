@@ -52,10 +52,16 @@
 	red = restore --staged --worktree
 
 [core]
-	pager = diff-so-fancy | bat
+	pager = delta
 
 [interactive]
-	diffFilter = diff-so-fancy --patch
+	diffFilter = delta --color-only
+
+[delta]
+	navigate = true
+	dark = true
+	line-numbers = true
+	side-by-side = true
 
 [push]
 	autoSetupRemote = true
@@ -66,8 +72,8 @@
 	untracked = "red bold"
 
 
-
-
+[merge]
+	conflictstyle = zdiff3
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
