@@ -37,6 +37,8 @@
 	; Copy current branch name
 	cpb = !git rev-parse --abbrev-ref HEAD | xargs echo -n | pbcopy
 
+	nuke = !git restore . && git clean -fd
+
 	; Edit global config file
 	econf = config --global --edit
 
