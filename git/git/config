@@ -3,6 +3,7 @@
 
 	c = commit
 	ca = commit --amend --no-edit
+	cp = commit --patch
 
 	p = pull --rebase
 	pf = push --force-with-lease
@@ -17,13 +18,16 @@
 	sw = switch
 
 	; Diff unstaged
-	d = diff
+	d = diff --output-indicator-new=' ' --output-indicator-old=' '
 
 	; Diff staged
-	ds = diff --staged
+	ds = d --staged
 
 	; Show pretty log
  	l = log --format=format:'%C(bold blue)%h%C(reset) %C(bold green)(%an)%C(reset) %C(white)%s%C(reset) %C(dim white)- %ar%C(reset)%C(auto)%d%C(reset)'
+
+	; Short log just to view the most recent commits
+	ls = l -10
 
 	; Show log with the graph
 	lg = l --graph
@@ -37,7 +41,7 @@
 	; Copy current branch name
 	cpb = !git rev-parse --abbrev-ref HEAD | xargs echo -n | pbcopy
 
-	nuke = !git restore . && git clean -fd
+	nuke = !git reset --hard HEAD && git clean -fd
 
 	; Edit global config file
 	econf = config --global --edit
