@@ -11,4 +11,11 @@ set -a PATH ~/.local/bin
 
 fish_vi_key_bindings insert
 
+function dev
+    set -l layouts $HOME/.devlayouts
+    if test -e $layouts
+        sh $layouts/run.sh
+    end
+end
+
 zoxide init fish | source
