@@ -41,3 +41,5 @@ case $os in
 esac
 
 path+=("$HOME/.local/bin")
+
+eval "$(zoxide init zsh)"
