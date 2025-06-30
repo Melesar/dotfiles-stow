@@ -5,7 +5,6 @@ size = 16
 [terminal]
 shell = "/opt/homebrew/bin/fish"
 
-
 [font.normal]
 family = "JetBrainsMono Nerd Font"
 style = "Regular"
@@ -34,6 +33,7 @@ post_processing = true
 binding = { key = "C", mods = "Alt|Shift" }
 
 [[hints.enabled]]
-regex = '[^ ]*/[^/]+\.[[:alnum:]]+'
+regex = '[^ ]*/[[[:alnum:]]._-]+'
 action = "Paste"
 binding = { key = "F", mods = "Alt|Shift" }
+
