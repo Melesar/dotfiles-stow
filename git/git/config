@@ -1,5 +1,5 @@
 [alias]
-	s = status -sb
+	s = status -s
 
 	c = commit
 	ca = commit --amend --no-edit
